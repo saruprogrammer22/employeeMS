@@ -9,6 +9,8 @@ import DashboardHome from "./Pages/DashboardHome"
 import DashboardME from "./Pages/DashboardME"
 import DashboardCategory from "./Pages/DashboardCategory"
 import DashboardProfile from "./Pages/DashboardProfile"
+import AddCategoryDB from "./Pages/AddCategoryDB"
+import AddEmployee from "./Pages/AddEmployee"
 
 function App() {
 
@@ -24,6 +26,8 @@ function App() {
                 <Route path="/dashboard/employee" element={<DashboardME />}></Route>
                 <Route path="/dashboard/category" element={<DashboardCategory />}></Route>
                 <Route path="/dashboard/profile" element={<DashboardProfile />}></Route>
+                <Route path="/dashboard/add_category" element={<AddCategoryDB />}></Route>
+                <Route path="/dashboard/add_employee" element={<AddEmployee />}></Route>
               </Route>
           </Routes>
           <ToastContainer />
