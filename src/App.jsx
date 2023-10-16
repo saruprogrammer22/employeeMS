@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'
 import Header from "./components/Header"
 import Login from "./Pages/Login"
+import Dashboard from "./components/Dashboard"
 
 function App() {
 
@@ -11,9 +12,10 @@ function App() {
   return (
     <>
       <Router>
-      <Header />
           <Routes>
+            <Route path="/" element={<Header />}/>
               <Route path="/login" element={<Login />}/>
+              <Route path="/dashboard" element={<Dashboard />}/>
           </Routes>
           <ToastContainer />
       </Router>
