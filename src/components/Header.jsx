@@ -12,6 +12,12 @@ const Header = () => {
       console.log(click);
   }
 
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => {
+    setShow(!show)
+  }
+
   return (
     <div className='flex flex-col justify-center items-center w-full'>
         <div className='xl:h-12 h-12  bg-gradient-to-br from-red-600 to-red-900 flex justify-end items-center w-full fixed z-20 top-0'>
@@ -27,11 +33,13 @@ const Header = () => {
                     <h1>Service</h1>
                 </Link>
                 <Link to={'/users'}>
-                <h1>MyTask</h1>
+                <h1>Contact</h1>
                 </Link>
-                <Link>
-                <h1>Log out</h1>
-                </Link>               
+                {show ? <Link to={"/signup"} onClick={() => handleShow()}>
+                <h1>Sign up</h1>
+                </Link> : <Link onClick={() => handleShow()}>
+                <h1>Log in</h1>
+                </Link>    }           
         </div>
 
         <div onClick={() => handleClick()} className='xl:hidden mr-4 '>{
@@ -57,14 +65,18 @@ const Header = () => {
                 <Link className='bg-slate-100 w-[62%] text-center py-2 rounded-sm active:scale-110 transition-all duration-200 font-bold shadow-lg'>
                     <h1>Service</h1>
                 </Link>
-                <Link onClick={() => handleClick()} to={'/login'} className='bg-slate-100 w-[62%] text-center py-2 rounded-sm active:scale-110 transition-all duration-200 font-bold shadow-lg'>
-                <h1>Login</h1>
-                </Link>
-                <Link className='bg-slate-100 w-[62%] text-center py-2 rounded-sm active:scale-110 transition-all duration-200 font-bold shadow-lg'>
-                <h1>Sign up</h1>
-                </Link> 
 
+                {show ? <Link onClick={() => handleClick()} to={'/login'} className='bg-slate-100 w-[62%] text-center py-2 rounded-sm active:scale-110 transition-all duration-200 font-bold shadow-lg'>
+                <h1 onClick={() => handleShow()}>Login</h1>
+                </Link> :
+                <Link className='bg-slate-100 w-[62%] text-center py-2 rounded-sm active:scale-110 transition-all duration-200 font-bold shadow-lg'>
+                <h1 onClick={() => handleShow()}>Sign up</h1>
+                </Link> 
+                }
                 
+                
+
+     
         </div>  
   
       </div>

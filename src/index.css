@@ -7,3 +7,11 @@
     letter-spacing: 14px;
     font-family: sans-serif;
 }
+
+.letterSpacing {
+    letter-spacing: 4px;
+}
+
+.letterSpacingMB {
+    letter-spacing: 1px;
+}

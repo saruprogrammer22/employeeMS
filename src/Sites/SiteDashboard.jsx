@@ -18,18 +18,18 @@ const Header = () => {
 
         <div className=' text-white mr-12 gap-6 font-semibold hidden xl:flex'>
                 <Link to={'/home'}>
-                    <h1>Home</h1>
+                    <h1>Dashboard</h1>
                 </Link>
                 <Link>
-                    <h1>About</h1>
+                    <h1>Manage employee</h1>
                 </Link>
                 <Link>
-                    <h1>Service</h1>
+                    <h1>Category</h1>
                 </Link>
                 <Link to={'/users'}>
-                <h1>MyProfile</h1>
+                <h1>Profile</h1>
                 </Link>
-                <Link>
+                <Link to={"/login"}>
                 <h1>Log out</h1>
                 </Link>               
         </div>
@@ -49,16 +49,16 @@ const Header = () => {
 
       <div className='absolute w-full flex justify-center items-center flex-col h-screen gap-8'>
               <Link onClick={() => handleClick()} to={'/home'} className='bg-slate-100 w-[62%] text-center py-2 rounded-sm active:scale-110 transition-all duration-200 font-bold shadow-xl'>
-                    <h1>Home</h1>
+                    <h1>Dashboard</h1>
                 </Link>
                 <Link className='bg-slate-100 w-[62%] text-center py-2 rounded-sm active:scale-110 transition-all duration-200 font-bold shadow-lg'>
-                    <h1>About</h1>
+                    <h1>Manage employees</h1>
                 </Link>
                 <Link className='bg-slate-100 w-[62%] text-center py-2 rounded-sm active:scale-110 transition-all duration-200 font-bold shadow-lg'>
-                    <h1>Service</h1>
+                    <h1>Category</h1>
                 </Link>
                 <Link onClick={() => handleClick()} to={'/login'} className='bg-slate-100 w-[62%] text-center py-2 rounded-sm active:scale-110 transition-all duration-200 font-bold shadow-lg'>
-                <h1>MyProfile</h1>
+                <h1>Profile</h1>
                 </Link>
                 <Link className='bg-slate-100 w-[62%] text-center py-2 rounded-sm active:scale-110 transition-all duration-200 font-bold shadow-lg'>
                 <h1>Log Out</h1>
