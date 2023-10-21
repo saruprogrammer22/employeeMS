@@ -20,12 +20,12 @@ const DashboardCategory = () => {
   return (
     <div className='w-full flex flex-col  justify-center '>
         <div className='w-full h-20 flex justify-center items-center py-4 mt-8 mb-4'>
-            <h1 className='text-4xl uppercase font-bold text-green-600'>Category List</h1>
+            <h1 className='text-4xl uppercase font-bold text-red-600'>Category List</h1>
         </div>
 
         <div className='w-full flex justify-center items-center'>
         <Link to={'/dashboard/add_category'} className='w-[170px] flex justify-center items-center'>
-            <button className='bg-blue-500 w-[170px] h-12 flex justify-center items-center text-white font-semibold rounded-lg'>
+            <button className='bg-gradient-to-br from-red-600 to-red-900 shadow-md w-[170px] h-12 flex justify-center items-center text-white font-semibold rounded-lg'>
                 Add Category
             </button>
         </Link>
@@ -38,7 +38,7 @@ const DashboardCategory = () => {
           {category.map((ct, index) => {
               return <div key={index} className=' border-black w-full'>
                   <div className='w-full flex text-sm px-8 py-8 border-b border-gray-500 xl:py-4'>
-                     <h1 className='letterSpacing font-semibold'>{ct.name}</h1>
+                     <h1 className='letterSpacing font-semibold text-gray-600'>{ct.name}</h1>
                   </div>
               </div>
           })}

@@ -13,6 +13,7 @@ app.use(cors(
     credentials: true
     }
 ));
+app.use(express.static("Public"))
 
 app.use("/auth", adminRouter)
 
