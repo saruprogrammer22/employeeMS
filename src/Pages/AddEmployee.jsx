@@ -3,6 +3,7 @@ import  { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
 import {AiOutlineUserAdd} from 'react-icons/ai'
 import { MdLocalBar } from 'react-icons/md';
+import { toast } from 'react-toastify';
 
 
 const AddEmployee = () => {
@@ -10,7 +11,7 @@ const AddEmployee = () => {
   const navigate = useNavigate()
     
     const [employee, setEmployee] = useState({
-      username: '',
+      name: '',
       email: '',
       address: '',
       password: '',
@@ -39,7 +40,7 @@ const AddEmployee = () => {
   const handleSubmit = (e) => {
       e.preventDefault();
       const formData = new FormData();
-      formData.append("username", employee.username);
+      formData.append("username", employee.name);
       formData.append("email", employee.email);
       formData.append("password", employee.password);
       formData.append("address", employee.address);
@@ -49,6 +50,7 @@ const AddEmployee = () => {
       .then(result => {
         if(result.data.Status) {
           navigate("/dashboard/employee")
+          toast.success(`${employee.name} Added Succesfully`)
       } else{
           alert(result.data.Error)
       }
@@ -68,7 +70,7 @@ const AddEmployee = () => {
             <form onSubmit={handleSubmit} className='flex flex-col w-full xl:w-[44%] px-8 gap-2 xl:gap-1'>
                 <div className='w-full flex flex-col'>
                 <span className='text-black font-semibold py-1 text-lg'>Username :</span>
-                <input onChange={(e) => setEmployee({...employee, username: e.target.value})} placeholder='Username' name='Username' type='text' className='border-2 h-12 xl:h-10 pl-4 border-gray-500'></input>
+                <input onChange={(e) => setEmployee({...employee, name: e.target.value})} placeholder='Username' name='Username' type='text' className='border-2 h-12 xl:h-10 pl-4 border-gray-500'></input>
                 </div>
 
                 <div className='w-full flex flex-col'>
@@ -87,8 +89,9 @@ const AddEmployee = () => {
                 <input onChange={(e) => setEmployee({...employee, address: e.target.value})} placeholder='Address' name='Address' type='text' className='border-2 xl:h-10 h-12 pl-4 border-gray-500'></input>
                 </div>
 
-                <div>
-                  <select onChange={(e) => setEmployee({...employee, category: e.target.value})} >
+                <div className='flex gap-2 my-2'>
+                  <h1 className='text-black font-semibold text-lg'>Category :</h1>
+                  <select className='bg-[#ffffff] hover:shadow-xl' onChange={(e) => setEmployee({...employee, category: e.target.value})} >
                     {category.map(c => {
                       return <option key={c.id} value={c.id}>{c.name}</option>
                     })}

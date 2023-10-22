@@ -85,4 +85,38 @@ router.get("/employee", (err, res) => {
     })
 })
 
+router.get("/employee/:id", (req, res) => {
+    const id = req.params.id;
+    const sql = "SELECT * FROM worker WHERE id = ?";
+    con.query(sql,[id], (err, result) => {
+        if(err) return res.json({Status: false, Error: "query error"})
+        return res.json({Status: true, Result: result})
+    })
+
+})
+
+router.put("/edit_employee/:id", (req, res) => {
+    const id = req.params.id;
+    const sql = "UPDATE worker set name = ?, email = ?, address = ?, category = ? WHERE id = ?"
+    const values = [
+        req.body.name,
+        req.body.email,
+        req.body.address,
+        req.body.category,
+    ]
+    con.query(sql, [...values,id], (err, result) => {
+        if(err) return res.json({Status: false, Error:"Query error"+err})
+        return res.json({Status: true, Result: result})
+    })
+})
+
+router.delete("/delete_employee/:id", (req, res) => {
+    const id = req.params.id;
+    const sql = "DELETE FROM worker WHERE id = ?";
+    con.query(sql,[id], (err, result) => {
+        if(err) return res.json({Status: false, Error: "Query error"+err})
+        return res.json({Status: true, Result: result})
+    })
+})
+
 export {router as adminRouter}
