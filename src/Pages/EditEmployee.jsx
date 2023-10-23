@@ -12,7 +12,8 @@ const EditEmployee = () => {
       name: '',
       email: '',
       address: '',
-      category: ''
+      category: '',
+      salary: ''
     })  
 
 
@@ -36,6 +37,7 @@ const EditEmployee = () => {
             name: result.data.Result[0].name,
             email: result.data.Result[0].email,
             address: result.data.Result[0].address,
+            salary: result.data.Result[0].salary,
         })
     }).catch(err => {
         console.log(err)
@@ -54,6 +56,8 @@ const EditEmployee = () => {
         }
     }).catch(err => console.log(err))
   }
+
+  console.log(employee.category)
 
   return (
     <div className='w-full flex justify-center items-center'>
@@ -80,16 +84,22 @@ const EditEmployee = () => {
             <input value={employee.address} onChange={(e) => setEmployee({...employee, address: e.target.value})} placeholder='Address' name='Address' type='text' className='border-2 xl:h-10 h-12 pl-4 border-gray-500'></input>
             </div>
 
+            <div className='w-full flex flex-col'>
+            <span className='text-black font-semibold py-1 text-lg'>Salary :</span>
+            <input value={employee.salary} onChange={(e) => setEmployee({...employee, salary: e.target.value})} placeholder='Address' name='salary' type='number' className='border-2 xl:h-10 h-12 pl-4 border-gray-500'></input>
+            </div>
+
             <div className='flex gap-2 mt-2'>
             <h1 className='text-black font-semibold text-lg '>Category :</h1>
-              <select className='hover:shadow-xl' onChange={(e) => setEmployee({...employee, category: e.target.value})} >
+              <select className='hover:shadow-xl' value={employee.category} onChange={(e) => setEmployee({...employee, category: e.target.value})} >
+                <option>SELECTION</option>
                 {category.map(c => {
-                  return <option key={c.id} value={c.id}>{c.name}</option>
+                  return <option key={c.id} value={c.name}>{c.name}</option>
                 })}
               </select>
             </div>
             
-        
+           
 
             <button className='w-full bg-gradient-to-br from-red-600 to-red-900  py-3 mt-2  letterSpacing text-xl font-semibold text-white'>SUBMIT</button>
 

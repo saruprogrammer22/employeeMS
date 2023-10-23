@@ -59,7 +59,7 @@ const upload = multer({
 
 
 router.post("/add_employee",upload.single("image"), (req, res) => {
-    const sql = "INSERT INTO worker (name,email,password,address,category,image) VALUES (?)";
+    const sql = "INSERT INTO worker (name,email,password,address,category,image,salary) VALUES (?)";
     bcrypt.hash(req.body.password, 10, (err, hash) => {
         if(err) return res.json({Status: false, Error: "Query ERROR"})
         const values = [
@@ -68,11 +68,12 @@ router.post("/add_employee",upload.single("image"), (req, res) => {
             hash,
             req.body.address,
             req.body.category,
-            req.file.filename
+            req.file.filename,
+            req.body.salary
         ]
         con.query(sql, [values], (err, result) => {
             if(err) return res.json({Status: false, Error: "Querry error"})
-            return res.json({Status: true})
+            return res.json({Status: true, Result: result})
         })
     })
 })
@@ -97,12 +98,13 @@ router.get("/employee/:id", (req, res) => {
 
 router.put("/edit_employee/:id", (req, res) => {
     const id = req.params.id;
-    const sql = "UPDATE worker set name = ?, email = ?, address = ?, category = ? WHERE id = ?"
+    const sql = "UPDATE worker set name = ?, email = ?, address = ?, category = ?, salary = ? WHERE id = ?"
     const values = [
         req.body.name,
         req.body.email,
         req.body.address,
         req.body.category,
+        req.body.salary
     ]
     con.query(sql, [...values,id], (err, result) => {
         if(err) return res.json({Status: false, Error:"Query error"+err})
@@ -115,6 +117,37 @@ router.delete("/delete_employee/:id", (req, res) => {
     const sql = "DELETE FROM worker WHERE id = ?";
     con.query(sql,[id], (err, result) => {
         if(err) return res.json({Status: false, Error: "Query error"+err})
+        return res.json({Status: true, Result: result})
+    })
+})
+
+router.get("/admin_count", (req, res) => {
+    const sql = "select count(id) as admin from person";
+    con.query(sql, (err,result) => {
+        if(err) return res.json({Status: false, Error: "QUery error"+err})
+        return res.json({Status: true, Result: result})
+    })
+})
+router.get("/employee_count", (req, res) => {
+    const sql = "select count(id) as worker from worker";
+    con.query(sql, (err,result) => {
+        if(err) return res.json({Status: false, Error: "QUery error"+err})
+        return res.json({Status: true, Result: result})
+    })
+})
+router.get("/salary_count", (req, res) => {
+    const sql = "select sum(salary) as salary from worker";
+    con.query(sql, (err,result) => {
+        if(err) return res.json({Status: false, Error: "QUery error"+err})
+        return res.json({Status: true, Result: result})
+    })
+})
+
+
+router.get("/admin", (req, res) => {
+    const sql = "SELECT * FROM person"
+    con.query(sql, (err, result) => {
+        if(err) return res.json({Status: false, Error: "query error" +err})
         return res.json({Status: true, Result: result})
     })
 })

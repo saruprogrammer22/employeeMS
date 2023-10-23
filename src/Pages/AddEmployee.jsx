@@ -15,11 +15,12 @@ const AddEmployee = () => {
       email: '',
       address: '',
       password: '',
-      category_id: '',
+      image: '',
       category: '',
-      image: ''
+      salary: ''
     })  
 
+   
 
     const [category, setCategory] = useState([])
 
@@ -46,6 +47,7 @@ const AddEmployee = () => {
       formData.append("address", employee.address);
       formData.append("image", employee.image);
       formData.append("category", employee.category);
+      formData.append("salary", employee.salary);
       axios.post("http://localhost:8088/auth/add_employee", formData)
       .then(result => {
         if(result.data.Status) {
@@ -57,7 +59,7 @@ const AddEmployee = () => {
       })
       .catch(err => console.log(err))
   }
-
+  console.log(employee.category)
    
   return (
     <div className='w-full flex justify-center items-center'>
@@ -89,11 +91,17 @@ const AddEmployee = () => {
                 <input onChange={(e) => setEmployee({...employee, address: e.target.value})} placeholder='Address' name='Address' type='text' className='border-2 xl:h-10 h-12 pl-4 border-gray-500'></input>
                 </div>
 
+                <div className='w-full flex flex-col'>
+                <span className='text-black font-semibold py-1 text-lg'>Salary :</span>
+                <input onChange={(e) => setEmployee({...employee, salary: e.target.value})} placeholder='Address' name='salary' type='number' className='border-2 xl:h-10 h-12 pl-4 border-gray-500'></input>
+                </div>
+
                 <div className='flex gap-2 my-2'>
                   <h1 className='text-black font-semibold text-lg'>Category :</h1>
                   <select className='bg-[#ffffff] hover:shadow-xl' onChange={(e) => setEmployee({...employee, category: e.target.value})} >
+                  <option>SELECTION</option>
                     {category.map(c => {
-                      return <option key={c.id} value={c.id}>{c.name}</option>
+                      return <option key={c.id} value={c.name}>{c.name}</option>
                     })}
                   </select>
                 </div>
