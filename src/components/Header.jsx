@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { AiOutlineMenu, } from 'react-icons/ai'
 import { FaX} from 'react-icons/fa6'
 
+
 const Header = () => {
 
   const [click, setClick] = useState(false);
@@ -17,29 +18,15 @@ const Header = () => {
   const handleShow = () => {
     setShow(!show)
   }
-
   return (
     <div className='flex flex-col justify-center items-center w-full'>
         <div className='xl:h-12 h-12  bg-gradient-to-br from-red-600 to-red-900 flex justify-end items-center w-full fixed z-20 top-0'>
 
         <div className=' text-white mr-12 gap-6 font-semibold hidden xl:flex'>
-                <Link to={'/home'}>
-                    <h1>Home</h1>
-                </Link>
-                <Link>
-                    <h1>About</h1>
-                </Link>
-                <Link>
-                    <h1>Service</h1>
-                </Link>
-                <Link to={'/users'}>
-                <h1>Contact</h1>
-                </Link>
-                {show ? <Link to={"/signup"} onClick={() => handleShow()}>
-                <h1>Sign up</h1>
-                </Link> : <Link onClick={() => handleShow()}>
-                <h1>Log in</h1>
-                </Link>    }           
+                
+                <Link to={'/'} onClick={() => handleShow()}>
+                <h1>Swicht Login</h1>
+                </Link>          
         </div>
 
         <div onClick={() => handleClick()} className='xl:hidden mr-4 '>{
@@ -50,8 +37,6 @@ const Header = () => {
         }
         </div>
       </div>
-
-  
    
       <div className={`${click ? 'right-0 transition-all duration-300' : '-right-full transition-all duration-300'} flex flex-col justify-between    w-full z-[99]  bg-white fixed h-full shadow-xl md:w-[48vw] lg:w-[44vw] xl:w-[35vw]  md:bg-white md:border-2 top-12 xl:hidden`}>
 
@@ -66,13 +51,9 @@ const Header = () => {
                     <h1>Service</h1>
                 </Link>
 
-                {show ? <Link onClick={() => handleClick()} to={'/login'} className='bg-slate-100 w-[62%] text-center py-2 rounded-sm active:scale-110 transition-all duration-200 font-bold shadow-lg'>
-                <h1 onClick={() => handleShow()}>Login</h1>
-                </Link> :
-                <Link className='bg-slate-100 w-[62%] text-center py-2 rounded-sm active:scale-110 transition-all duration-200 font-bold shadow-lg'>
-                <h1 onClick={() => handleShow()}>Sign up</h1>
-                </Link> 
-                }
+                <Link onClick={() => handleClick()} to={'/'} className='bg-slate-100 w-[62%] text-center py-2 rounded-sm active:scale-125 transition-all duration-200 font-bold shadow-lg'>
+                <h1 onClick={() => handleShow()}>Swicht Login</h1>
+                </Link>
                 
                 
 
@@ -80,7 +61,8 @@ const Header = () => {
         </div>  
   
       </div>
-
+ 
+      
     </div>
   )
 }

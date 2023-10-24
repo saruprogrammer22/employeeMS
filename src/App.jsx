@@ -2,7 +2,7 @@ import {BrowserRouter as Router, Routes, Route } from "react-router-dom"
 
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css'
-import Header from "./components/Header"
+
 import Login from "./Pages/Login"
 import Dashboard from "./components/Dashboard"
 import DashboardHome from "./Pages/DashboardHome"
@@ -12,16 +12,25 @@ import DashboardProfile from "./Pages/DashboardProfile"
 import AddCategoryDB from "./Pages/AddCategoryDB"
 import AddEmployee from "./Pages/AddEmployee"
 import EditEmployee from "./Pages/editEmployee"
+import LoginAs from "./Pages/LoginAs"
+import EmployeeLogin from "./Pages/EmployeeLogin"
+import EmployeeDetails from "./Pages/PagesEmployee/EmployeeDetails"
+import EditProfile from "./Pages/PagesEmployee/EditProfile"
 
 function App() {
-
+  
 
   return (
     <>
       <Router>
           <Routes>
-            <Route path="/" element={<Header />}/>
-              <Route path="/login" element={<Login />}/>
+            
+            <Route path="/" element={<LoginAs />}/>
+      
+              <Route path="/adminlogin" element={<Login />}/>
+              <Route path="/employee_login" element={<EmployeeLogin />}/>
+              <Route path="/employee_detail/:id" element={<EmployeeDetails />}></Route>
+              <Route path="/profile_edit/:id" element={<EditProfile />}/>
               <Route path="/dashboard" element={<Dashboard />}>
                 <Route path="/dashboard" element={<DashboardHome />}></Route>
                 <Route path="/dashboard/employee" element={<DashboardME />}></Route>

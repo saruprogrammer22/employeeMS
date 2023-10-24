@@ -95,7 +95,7 @@ const DashboardME = () => {
                   <img src={'http://localhost:8088/Images/'+e.image} alt='' className='w-20 h-20 rounded-full mt-2 xl:mt-0 xl:h-16 xl:w-16'></img>
                 </div>
                 <div className=' w-[140px] xl:w-[100px] text-center xl:text-start border-b border-black xl:border-transparent'>
-                  <h1 className='text-3xl xl:text-2xl font-semibold '>{e.name}</h1>
+                  <h1 className='text-3xl xl:text-xl font-semibold '>{e.name}</h1>
                 </div>
                 <div className=' w-[160px] text-center xl:text-start'>
                   <h1>{e.category}</h1>
@@ -111,7 +111,7 @@ const DashboardME = () => {
                   <Link to={'/dashboard'} className=' justify-start items-center relative  w-16 hidden xl:flex cursor-pointer'>
                   <MdLocationPin className='text-red-500 text-3xl sh'/>  
                   <MdHouse className='text-3xl text-yellow-600 absolute right-2'/>          
-                  </Link>                      
+                  </Link>                     
                 </div>
                 
               </div>

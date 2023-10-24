@@ -1,16 +1,28 @@
 import {useState,} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { AiOutlineMenu, } from 'react-icons/ai'
 import { FaX} from 'react-icons/fa6'
+import axios from 'axios'
 
 const Header = () => {
-
+  const navigate = useNavigate()
   const [click, setClick] = useState(false);
 
   const handleClick = ()=>{
       setClick(!click);
       console.log(click);
   }
+  axios.defaults.withCredentials = true
+    const handleLogout = () => {
+        axios.get("http://localhost:8088/auth/logout")
+        .then(result => {
+            if(result.data.Status) {
+                navigate("/login")
+            }else{
+                result.data.Error
+            }
+        }).catch(err => console.log(err))
+    }
 
   return (
     <div className='flex flex-col justify-center items-center w-full'>
@@ -60,7 +72,7 @@ const Header = () => {
                 <Link  onClick={() => handleClick()} to={'/dashboard/profile'} className='bg-slate-100 w-[62%] text-center py-2 rounded-sm active:scale-110 transition-all duration-200 font-bold shadow-lg'>
                 <h1>Profile</h1>
                 </Link>
-                <Link to={'/login'} className='bg-slate-100 w-[62%] text-center py-2 rounded-sm active:scale-110 transition-all duration-200 font-bold shadow-lg'>
+                <Link onClick={() => handleLogout} to={'/adminlogin'} className='bg-slate-100 w-[62%] text-center py-2 rounded-sm active:scale-110 transition-all duration-200 font-bold shadow-lg'>
                 <h1>Log Out</h1>
                 </Link> 
 

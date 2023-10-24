@@ -15,7 +15,7 @@ router.post("/adminlogin", (req, res) => {
         if(result.length > 0) {
             const email = result[0].email;
             const token = jwt.sign(
-                { role: "admin", email: email },
+                { role: "admin", email: email, id: result[0].id },
                 "jwt_secret_key",
                 { expiresIn: "1d"}
             );
@@ -39,7 +39,7 @@ router.post("/add_category", (req, res) =>{
     const sql = "INSERT INTO category (`name`) VALUES (?)"
     con.query(sql, [req.body.category], (err, result) => {
         if(err) return res.json({Status: false, Error: "Querry error"})
-        return res.json({Status: true})
+        return res.json({Status: true, Result: result})
     })
 })
 
@@ -98,13 +98,14 @@ router.get("/employee/:id", (req, res) => {
 
 router.put("/edit_employee/:id", (req, res) => {
     const id = req.params.id;
-    const sql = "UPDATE worker set name = ?, email = ?, address = ?, category = ?, salary = ? WHERE id = ?"
+    const sql = "UPDATE worker set name = ?, email = ?, address = ?, category = ?, salary = ?  WHERE id = ?"
     const values = [
         req.body.name,
         req.body.email,
         req.body.address,
         req.body.category,
         req.body.salary
+       
     ]
     con.query(sql, [...values,id], (err, result) => {
         if(err) return res.json({Status: false, Error:"Query error"+err})
@@ -150,6 +151,26 @@ router.get("/admin", (req, res) => {
         if(err) return res.json({Status: false, Error: "query error" +err})
         return res.json({Status: true, Result: result})
     })
+})
+
+
+router.put("/edit_admin", (req, res) => {
+    const sql = "UPDATE person set  email = ?,password = ?, image = ?, username = ? WHERE id = ?"
+    const value = [
+        req.body.email,
+        req.file.filename,
+        req.body.usernames
+    ]
+    con.query(sql, [...value], (err, result) => {
+        if(err)  return res.json({Status: false, Error: "Query error"})
+        return res.json({Status: true, Result: result})
+    })
+})
+
+
+router.get("/logout", (req, res) => {
+    res.clearCookie("token");
+    return res.json({Status: true})
 })
 
 export {router as adminRouter}

@@ -1,15 +1,13 @@
 
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import {FaTrash, FaEdit} from 'react-icons/fa'
-import { MdLocationPin,MdHouse } from 'react-icons/md'
-import { AiOutlineUser } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
+import {MdEmail} from 'react-icons/md'
+
 import { FaUser } from 'react-icons/fa'
-import { toast } from 'react-toastify'
-import Swal from 'sweetalert2';
+
 const ListOfAdmin = () => {
-    const navigate = useNavigate();
+
     const [admin, setAdmin] = useState([])
   
     useEffect(() => {
@@ -27,33 +25,34 @@ const ListOfAdmin = () => {
     <div className='w-full flex flex-col  justify-center '>
         <div className='w-full h-20 flex justify-center items-center py-4 mt-8 '>
             <h1 className='text-4xl uppercase font-bold text-red-600'>List of Admins</h1>
+            <FaUser className='text-3xl text-[#ed1d24] ml-2'/>
+                    
         </div>
 
 
     
-        <div className='flex flex-col justify-center items-center mt-8 gap-4 xl:gap-0 px-8 xl:px-0'>
+        <div className='flex flex-col justify-center items-center mt-8 gap-4 xl:gap-0 px-4 xl:px-0'>
             
         {admin.map((e, i) => {
-            return <div key={i} className='w-[88%] xl:w-[44%] xl:px-4 border-b border-gray-600 flex flex-col xl:flex-row justify-between items-center h-[143px] xl:h-[88px] py-2 bg-white'>
+            return <div key={i} className='w-[100%] xl:w-[36%] xl:px-4 border-b-2 border-gray-600 flex flex-col xl:flex-row justify-center items-center h-[88px] xl:h-[88px] py-2 bg-white'>
 
-              <div className='flex flex-col xl:flex-row justify-center items-center w-full xl:w-full xl:justify-start gap-3'>
-                
-                <div className='mt-2'>
-                    <FaUser className='text-3xl'/>
-                </div>
-               
-                <div className=' w-[251px] text-center xl:text-start'>
-                  <h1>{e.email}</h1>
-                </div>
-                
-                
-                
+              <div className='flex justify-between items-center w-full  xl:px-0 gap-4'>
+                  <div className='flex justify-start items-center gap-2 w-[35%]  h-full py-2'>
+                    <div className='flex justify-center items-center xl:gap-3'>
+                    <div className='w-14 ml-4 xl:ml-0 '>
+                    <img className='w-12 h-12 xl:h-14 xl:w-14 rounded-full' src={'http://localhost:8088/Images/'+e.image}/>
+                    </div>
+                    <h1 className='font-bold text-lg'>{e.username}</h1>
+                  </div>
+                  </div>
+                  
+                  <div className='flex justify-center items-center gap-2 mr-4'>
+                    <MdEmail className='text-3xl'/>
+                    {e.email}
+                  </div>
               </div>
                 
-                <div className='w-full xl:w-44 flex justify-between items-center px-8 gap-6 text-md py-4'>
-                  <Link to={"/dashboard/edit_admin/"+e.id}  className='w-full bg-green-600 text-white font-semibold py-1 flex justify-center items-center gap-1 xl:w-12 xl:py-2 xl:px-4 xl:rounded-lg'><FaEdit /><h1 className='xl:hidden' >EDIT</h1></Link>
-                  <button  className='w-full bg-gradient-to-br from-red-600 to-red-900 text-white font-semibold py-1 flex justify-center items-center gap-1 xl:w-12 xl:py-2 xl:px-4 xl:rounded-lg'><FaTrash /><h1 className='xl:hidden'>DELETE</h1></button>
-                </div>
+               
             </div>
           })}
 
