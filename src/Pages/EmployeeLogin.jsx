@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {useState} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Header from '../components/Header';
 
 const EmployeeLogin = () => {

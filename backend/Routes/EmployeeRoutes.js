@@ -20,7 +20,7 @@ router.post("/employee_login", (req, res) => {
                      { expiresIn: "1d"}
                     )
                  res.cookie("token", token)
-                 return res.json({ loginStatus: true });
+                 return res.json({ loginStatus: true, id: result[0].id });
                 }
             });
         } else {

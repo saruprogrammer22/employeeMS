@@ -81,10 +81,10 @@ const DashboardME = () => {
             <div className='ml-[75px] text-xl font-extrabold'>
               <h1>Salary</h1>
             </div>
-            <div className='ml-[92px] text-xl font-extrabold'>
+            <div className='ml-[76px] text-xl font-extrabold'>
               <h1>Email</h1>
             </div>
-            <div className='ml-[126px] text-xl font-extrabold'>
+            <div className='ml-[135px] text-xl font-extrabold'>
               <h1>Address</h1>
             </div>
           </div>
@@ -106,7 +106,7 @@ const DashboardME = () => {
                 <div className=' w-[62px] text-center xl:text-start'>
                   <h1 className='font-semibold'>&#x20B1;{salary}</h1>
                 </div>
-                <div className=' w-[251px] text-center xl:text-start'>
+                <div className=' w-[251px] text-center xl:text-start pl-3'>
                   <h1>{e.email}</h1>
                 </div>
                 
