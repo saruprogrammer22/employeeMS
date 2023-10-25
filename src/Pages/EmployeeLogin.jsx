@@ -11,7 +11,7 @@ const EmployeeLogin = () => {
     password: "",
   });
   const [error, setError] = useState(null)
-
+  console.log(error)
   axios.defaults.withCredentials = true
 
   const handleSubmit = (e) => {
@@ -24,7 +24,9 @@ const EmployeeLogin = () => {
         setError(result.data.Error)
       }
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+      console.log(err)
+    })
   }
   return (
     <div className='h-screen max-w-screen-xl mx-auto '>

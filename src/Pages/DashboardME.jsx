@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import {FaTrash, FaEdit} from 'react-icons/fa'
 import { MdLocationPin,MdHouse } from 'react-icons/md'
 import { toast } from 'react-toastify'
@@ -49,7 +49,9 @@ const DashboardME = () => {
     }
     
   }
- 
+
+
+
   return (
     <div className='w-full flex flex-col  justify-center '>
         <div className='w-full h-20 flex justify-center items-center py-4 mt-8 mb-4'>
@@ -88,11 +90,12 @@ const DashboardME = () => {
           </div>
 
           {employee.map((e, i) => {
+              const salary = new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(e.salary);
             return <div key={i} className='w-[88%] xl:w-[92%] border-b border-gray-600 flex flex-col xl:flex-row justify-between items-center h-[350px] xl:h-[88px] py-2 bg-white'>
 
               <div className='flex flex-col xl:flex-row justify-center items-center w-full xl:w-full xl:justify-start gap-3'>
                 <div className='w-28  flex justify-center'>
-                  <img src={'http://localhost:8088/Images/'+e.image} alt='' className='w-20 h-20 rounded-full mt-2 xl:mt-0 xl:h-16 xl:w-16'></img>
+                  <img src={'http://localhost:8088/Images/'+e.image} alt='' className='w-20 h-20 rounded-full mt-2 xl:mt-0 xl:h-16 xl:w-16 border-2 border-black bg-[#ed1d24]'></img>
                 </div>
                 <div className=' w-[140px] xl:w-[100px] text-center xl:text-start border-b border-black xl:border-transparent'>
                   <h1 className='text-3xl xl:text-xl font-semibold '>{e.name}</h1>
@@ -101,17 +104,20 @@ const DashboardME = () => {
                   <h1>{e.category}</h1>
                 </div>
                 <div className=' w-[62px] text-center xl:text-start'>
-                  <h1>${e.salary}</h1>
+                  <h1 className='font-semibold'>&#x20B1;{salary}</h1>
                 </div>
                 <div className=' w-[251px] text-center xl:text-start'>
                   <h1>{e.email}</h1>
                 </div>
                 
-                <div>
-                  <Link to={'/dashboard'} className=' justify-start items-center relative  w-16 hidden xl:flex cursor-pointer'>
+                <div  className='relative'>
+                  <Link  className=' justify-start items-center relative  w-16 hidden xl:flex cursor-pointer'>
                   <MdLocationPin className='text-red-500 text-3xl sh'/>  
-                  <MdHouse className='text-3xl text-yellow-600 absolute right-2'/>          
-                  </Link>                     
+                  <MdHouse className='text-3xl text-yellow-600 absolute right-2'/>   
+                  </Link>   
+                  <div className='absolute opacity-0 transition-all duration-300 hover:opacity-100 -top-1  shadow-md rounded-xl w-44 -left-8 bg-white font-semibold shadow-black px-2 cursor-pointer'>
+                    {e.address}
+                  </div>  
                 </div>
                 
               </div>

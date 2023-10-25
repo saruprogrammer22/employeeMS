@@ -7,9 +7,9 @@ const ProfileDetails = ({employee}) => {
  
   return (
     <div className='w-full flex justify-center items-center'>
-       <div className='w-[440px] h-[440px] border-2 border-black mt-16'>
-            <div className=' flex justify-center items-center h-[170px] xl:h-[134px] xl:mt-4'>
-                <img className='w-[128px] h-[128px] rounded-full' src={'http://localhost:8088/Images/'+employee.image} alt=""/>
+       <div className='w-[440px] h-[440px] xl:py-2 border-2 border-black mt-16'>
+            <div className=' flex justify-center items-center h-[170px] xl:h-[124px]  xl:mt-4'>
+                <img className='w-[128px] h-[128px] rounded-full' src={'http://localhost:8088/Images/'+employee.image}/>
             </div>
 
             <div className='flex flex-col justify-center items-center'>
@@ -29,7 +29,7 @@ const ProfileDetails = ({employee}) => {
                 </div>
                 <div className="w-full flex justify-start items-center gap-4">
                 <h2 className="text-xl font-semibold  xl:text-end">Salary:</h2>
-                <h1 className='text-xl w-full text-start font-bold text-yellow-600 ml-4'>${employee.salary}</h1>
+                <h1 className='text-xl w-full text-start font-bold text-yellow-600 ml-4'>&#x20B1;{employee.salary}</h1>
                 </div>
                 </div>
             </div>

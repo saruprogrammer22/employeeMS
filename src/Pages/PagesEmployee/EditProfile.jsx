@@ -109,7 +109,7 @@ const EditProfile = () => {
 
             <div className='flex gap-2 mt-2'>
             <h1 className='text-black font-semibold text-lg '>Category :</h1>
-              <select className='hover:shadow-xl' value={employee.category} onChange={(e) => setEmployee({...employee, category: e.target.value})} >
+              <select required className='hover:shadow-xl' value={employee.category} onChange={(e) => setEmployee({...employee, category: e.target.value})} >
                 <option>SELECTION</option>
                 {category.map(c => {
                   return <option key={c.id} value={c.name}>{c.name}</option>

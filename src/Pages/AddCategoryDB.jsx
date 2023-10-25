@@ -2,6 +2,7 @@ import axios from 'axios';
 import  { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import {AiOutlineFileAdd} from 'react-icons/ai'
+import { toast } from 'react-toastify';
 
 
 const AddCategoryDB = () => {
@@ -14,6 +15,7 @@ const AddCategoryDB = () => {
         .then(result => {
             if(result.data.Status) {
                 navigate("/dashboard/category")
+                toast.success(`${category} Succesfully Added!`)
             } else{
                 alert(result.data.Error)
             }

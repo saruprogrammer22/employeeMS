@@ -1,12 +1,13 @@
-import {useEffect} from 'react'
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios';
-const LoginAs = () => {
-    const navigate = useNavigate();
+import { useNavigate } from "react-router-dom"
 
+const LoginAs = () => {
+  const navigate = useNavigate();
   return (
-    <div className='w-full flex justify-center items-center'>
-         <div className='w-full h-screen  flex justify-center items-center bg-gradient-to-br from-red-600 to-red-900'>
+    <div className='w-full flex flex-col justify-center items-center'>
+         <div className='w-full h-screen  flex flex-col justify-center items-center bg-gradient-to-br from-red-600 to-red-900'>
+      <div className="mb-8">
+        <h1 className="text-white text-4xl uppercase underline shadow-xl">EMPLOYEE MANAGEMENT SYSTEM</h1>
+      </div>
            <div className=' border-black w-[422px] h-[240px] flex flex-col mx-8 shadow-lg shadow-black rounded-lg justify-center bg-white'>
             <div className='w-full text-center  underline text-gray-900 '>
               <h1 className='text-4xl font-bold text-black'>LOGIN AS</h1>

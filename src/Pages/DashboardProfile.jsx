@@ -28,9 +28,9 @@ const DashboardProfile = () => {
 
           <div className='flex justify-center items-center'><MdEmail className='text-2xl mt-2 mr-2'/> <h2 className='text-xl'>{admin.email}</h2></div>
 
-          <div className='w-[88%] xl:w-[28%]  flex justify-between items-center mt-4  gap-6 text-md '>
+          <div className='w-[35%] xl:w-[28%]  flex justify-between items-center mt-4  gap-6 text-md '>
                   <Link  className='w-full bg-green-600 text-white font-semibold py-1 flex justify-center items-center gap-2  xl:rounded-lg'><FaEdit /><h1 className='' >EDIT</h1></Link>
-                  <button className='w-full bg-gradient-to-br from-red-600 to-red-900 text-white font-semibold py-1 flex justify-center items-center xl:rounded-lg gap-2'><FaTrash /><h1 className=''>DELETE</h1></button>
+                  
                 </div>
       </div>
     </div>

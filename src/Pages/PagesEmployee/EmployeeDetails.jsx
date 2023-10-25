@@ -5,15 +5,16 @@ import ProfileDetails from "./ProfileDetails";
 const EmployeeDetails = () => {
   const navigate = useNavigate();
   const[employee, setEmployee] = useState([])
-  console.log(employee)
+
   const {id} = useParams();
+  console.log(employee)
   useEffect(() => {
-    axios.get("http://localhost:8088/employee/detail/"+id)
+    axios.get("http://localhost:8088/auth/employee")
     .then(result => {
       if(result.data.Status) {
         setEmployee(result.data.Result[0])
-      }else {
-        alert("ERROR")
+      } else {
+        alert(result.data.Error)
       }
     })
     .catch(err => console.log(err))

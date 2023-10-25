@@ -41,7 +41,7 @@ const Header = () => {
                 <Link to={''}>
                 <h1>Profile</h1>
                 </Link>
-                <Link to={""}>
+                <Link onClick={() => handleLogout} to={""}>
                 <h1>Log out</h1>
                 </Link>               
         </div>

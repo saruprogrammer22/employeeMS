@@ -2,7 +2,8 @@ import express from "express";
 import cors from 'cors'
 import { adminRouter } from "./Routes/AdminRoutes.js";
 import { EmployeeRouter } from "./Routes/EmployeeRoutes.js";
-
+import cookieParser from "cookie-parser";
+import jwt from 'jsonwebtoken'
 const app = express();
 
 app.use(express.json());
@@ -13,8 +14,8 @@ app.use(cors(
     credentials: true
     }
 ));
+app.use(cookieParser());
 app.use(express.static("Public"))
-
 app.use("/auth", adminRouter)
 app.use("/employee", EmployeeRouter)
 

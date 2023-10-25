@@ -34,7 +34,7 @@ const ListOfAdmin = () => {
         <div className='flex flex-col justify-center items-center mt-8 gap-4 xl:gap-0 px-4 xl:px-0'>
             
         {admin.map((e, i) => {
-            return <div key={i} className='w-[100%] xl:w-[36%] xl:px-4 border-b-2 border-gray-600 flex flex-col xl:flex-row justify-center items-center h-[88px] xl:h-[88px] py-2 bg-white'>
+            return <div key={i} className='w-[62%] xl:w-[36%] xl:px-4 border-b-2 border-gray-600 flex flex-col xl:flex-row justify-center items-center h-[88px] xl:h-[88px] py-2 bg-white'>
 
               <div className='flex justify-between items-center w-full  xl:px-0 gap-4'>
                   <div className='flex justify-start items-center gap-2 w-[35%]  h-full py-2'>
