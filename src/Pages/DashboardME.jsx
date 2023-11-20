@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import {FaTrash, FaEdit} from 'react-icons/fa'
 import { MdLocationPin,MdHouse } from 'react-icons/md'
 import { toast } from 'react-toastify'

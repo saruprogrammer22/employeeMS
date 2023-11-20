@@ -136,6 +136,7 @@ router.get("/employee_count", (req, res) => {
         return res.json({Status: true, Result: result})
     })
 })
+
 router.get("/salary_count", (req, res) => {
     const sql = "select sum(salary) as salary from worker";
     con.query(sql, (err,result) => {

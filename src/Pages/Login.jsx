@@ -18,8 +18,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    axios.post("http://localhost:8088/auth/adminlogin", values)
-    
+    axios.post("http://localhost:8088/auth/adminlogin", values)   
     .then(result => {
       if(result.data.loginStatus) {
         navigate("/dashboard")
