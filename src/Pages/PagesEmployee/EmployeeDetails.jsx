@@ -9,7 +9,7 @@ const EmployeeDetails = () => {
   const {id} = useParams();
   console.log(employee)
   useEffect(() => {
-    axios.get("http://localhost:8088/auth/employee")
+    axios.get("http://localhost:8088/employee/detail/"+id)
     .then(result => {
       if(result.data.Status) {
         setEmployee(result.data.Result[0])

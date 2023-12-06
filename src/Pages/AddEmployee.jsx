@@ -60,7 +60,7 @@ const AddEmployee = () => {
       .catch(err => console.log(err))
   }
   console.log(employee.category)
-   
+
   return (
     <div className='w-full flex justify-center items-center'>
         <div className='  w-full flex flex-col justify-center items-center mt-12 xl:mt-2'>

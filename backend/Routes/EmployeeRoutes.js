@@ -33,7 +33,7 @@ router.post("/employee_login", (req, res) => {
 
 router.get("/detail/:id", (req, res) => {
     const id = req.params.id;
-    const sql = "SELECT * FROM WHERE id = ?";
+    const sql = "SELECT * FROM worker WHERE id = ?";
     con.query(sql,[id], (err, result) => {
         if(err) return res.json({Status: false, Error: "query error"})
         return res.json({Status: true, Result: result})

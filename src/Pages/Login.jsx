@@ -37,6 +37,11 @@ const Login = () => {
                 <h1 className='text-4xl font-semibold'>ADMIN<span className='underline text-[#ed1d24]'>DEV</span></h1>
             </div>
 
+            <div className='w-full flex justify-center items-center flex-col my-2 '>
+                  <h1>Email : demo@gmail.com</h1>
+                  <h1>Password : demo123</h1>
+            </div>
+
             <form onSubmit={handleSubmit} className='w-full xl:w-[50%] flex flex-col justify-center items-center mt-8 gap-6'>
 
                 <div className='w-full flex justify-center items-center '>

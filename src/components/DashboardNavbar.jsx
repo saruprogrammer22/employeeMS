@@ -11,6 +11,7 @@ const DashboardNavbar = () => {
         axios.get("http://localhost:8088/auth/logout")
         .then(result => {
           if(result.data.Status){
+            window.localStorage.clear()
             navigate("/")
           }
         }).catch(err => console.log(err))
