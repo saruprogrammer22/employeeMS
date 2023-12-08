@@ -16,6 +16,7 @@ import LoginAs from "./Pages/LoginAs"
 import EmployeeLogin from "./Pages/EmployeeLogin"
 import EmployeeDetails from "./Pages/PagesEmployee/EmployeeDetails"
 import EditProfile from "./Pages/PagesEmployee/EditProfile"
+import NotFound from "./NotFound"
 
 function App() {
   
@@ -40,6 +41,8 @@ function App() {
                 <Route path="/dashboard/add_employee" element={<AddEmployee />}></Route>
                 <Route path="/dashboard/edit_employee/:id" element={<EditEmployee />}></Route>
               </Route>
+
+              <Route path="*" element={<NotFound />}/>
           </Routes>
           <ToastContainer />
       </Router>
