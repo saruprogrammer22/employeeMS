@@ -11,7 +11,7 @@ import DashboardCategory from "./Pages/DashboardCategory"
 import DashboardProfile from "./Pages/DashboardProfile"
 import AddCategoryDB from "./Pages/AddCategoryDB"
 import AddEmployee from "./Pages/AddEmployee"
-import EditEmployee from "./Pages/editEmployee"
+import EditEmployee from './Pages/EditEmployee'
 import LoginAs from "./Pages/LoginAs"
 import EmployeeLogin from "./Pages/EmployeeLogin"
 import EmployeeDetails from "./Pages/PagesEmployee/EmployeeDetails"
